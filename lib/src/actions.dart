@@ -80,7 +80,6 @@ class CustomSlidableAction extends StatelessWidget {
   /// {@endtemplate}
   final EdgeInsets? padding;
 
-
   /// {@template slidable.actions.margin}
   /// The margin of the OutlinedButton
   /// {@endtemplate}
@@ -99,7 +98,10 @@ class CustomSlidableAction extends StatelessWidget {
 
     return Expanded(
       flex: flex,
-      child: SizedBox.expand(
+      child: Container(
+        margin: margin,
+        height: double.infinity,
+        width: double.infinity,
         child: OutlinedButton(
           onPressed: () => _handleTap(context),
           style: OutlinedButton.styleFrom(
@@ -136,20 +138,20 @@ class SlidableAction extends StatelessWidget {
   /// You must set either an [icon] or a [label].
   ///
   /// The [flex] argument must also be greater than 0.
-  const SlidableAction({
-    super.key,
-    this.flex = _kFlex,
-    this.backgroundColor = _kBackgroundColor,
-    this.foregroundColor,
-    this.autoClose = _kAutoClose,
-    required this.onPressed,
-    this.icon,
-    this.spacing = 4,
-    this.label,
-    this.borderRadius = BorderRadius.zero,
-    this.padding,
-    this.margin
-  })  : assert(flex > 0),
+  const SlidableAction(
+      {super.key,
+      this.flex = _kFlex,
+      this.backgroundColor = _kBackgroundColor,
+      this.foregroundColor,
+      this.autoClose = _kAutoClose,
+      required this.onPressed,
+      this.icon,
+      this.spacing = 4,
+      this.label,
+      this.borderRadius = BorderRadius.zero,
+      this.padding,
+      this.margin})
+      : assert(flex > 0),
         assert(icon != null || label != null);
 
   /// {@macro slidable.actions.flex}
