@@ -26,6 +26,7 @@ class CustomSlidableAction extends StatelessWidget {
     this.borderRadius = BorderRadius.zero,
     this.padding,
     this.margin,
+    this.height,
     required this.onPressed,
     required this.child,
   }) : assert(flex > 0);
@@ -85,6 +86,12 @@ class CustomSlidableAction extends StatelessWidget {
   /// {@endtemplate}
   final EdgeInsets? margin;
 
+
+  /// {@template slidable.actions.height}
+  /// The height of the OutlinedButton
+  /// {@endtemplate}
+  final double? height;
+
   /// Typically the action's icon or label.
   final Widget child;
 
@@ -100,7 +107,7 @@ class CustomSlidableAction extends StatelessWidget {
       flex: flex,
       child: Container(
         margin: margin,
-        height: double.infinity,
+        height: height ?? double.infinity,
         width: double.infinity,
         child: OutlinedButton(
           onPressed: () => _handleTap(context),
@@ -150,7 +157,8 @@ class SlidableAction extends StatelessWidget {
       this.label,
       this.borderRadius = BorderRadius.zero,
       this.padding,
-      this.margin})
+      this.margin,
+      this.height})
       : assert(flex > 0),
         assert(icon != null || label != null);
 
@@ -188,6 +196,9 @@ class SlidableAction extends StatelessWidget {
 
   /// Margin of the OutlinedButton
   final EdgeInsets? margin;
+
+  /// Height of the OutlinedButton
+  final double? height;
 
   @override
   Widget build(BuildContext context) {
@@ -231,6 +242,7 @@ class SlidableAction extends StatelessWidget {
       borderRadius: borderRadius,
       padding: padding,
       margin: margin,
+      height: height,
       onPressed: onPressed,
       autoClose: autoClose,
       backgroundColor: backgroundColor,
